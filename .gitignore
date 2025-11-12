@@ -18,6 +18,10 @@ build/
 coverage/
 .hardhat/
 
+# Scripts et fichiers générés
+scripts/
+flat/
+
 # Cache
 cache/
 artifacts/
