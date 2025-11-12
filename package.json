@@ -1,0 +1,20 @@
+{
+  "name": "digna",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+  "deploy:test": "hardhat run scripts/deploy_all.js --network bsctest",
+  "lp:test": "hardhat run scripts/seed-and-add-liquidity.js --network bsctest",
+  "deploy:main": "hardhat run scripts/deploy_all.js --network bsc",
+  "lp:main": "hardhat run scripts/seed-and-add-liquidity.js --network bsc",
+  "bal:main": "hardhat run scripts/check-balance.js --network bsc",
+  "verify:main": "hardhat run scripts/verify.js --network bsc",
+  "route-check:main": "hardhat run scripts/route-check.js --network bsc"
+}
+,
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.6.1",
+    "hardhat": "^2.22.8"
+  }
+}
