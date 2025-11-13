@@ -1,98 +1,99 @@
-# Digna Hybrid Token Suite# Digna Hybrid Suite
+# Digna Hybrid Suite
 
+Système de token hybride avec staking, vault de solidarité et collecteur de liquidités pour la blockchain Binance Smart Chain (BSC).
 
-
-Système de token hybride avec staking, vault de solidarité et collecteur de liquidités pour la blockchain Binance Smart Chain (BSC).## Contenu
+## Contenu
 
 - `contracts/` : DignaHybridToken, StakingPool, SolidarityVault, LiquidityCollector
 
-## 🏗️ Architecture- `scripts/` : deploy_all, seed-and-add-liquidity, check-balance, verify
+## 🏗️ Architecture
 
 - `hardhat.config.js`, `package.json`, `.env.example`
 
 ### Contrats Intelligents
 
-- **DignaHybridToken** : Token ERC20 avec frais de transaction dynamiques## Démarrage rapide
-
-- **StakingPool** : Pool de staking pour les récompenses```bash
-
-- **SolidarityVault** : Vault de solidarité pour la redistributioncp .env.example .env   # remplis PRIVATE_KEY
-
-- **LiquidityCollector** : Collecteur automatique de liquiditésnpm i
-
-- **Interfaces** : IERC20, IPancakeRouter pour l'intégration DEXnpx hardhat compile
-
-npm run deploy:test
-
-### Structure du Projet# note les adresses (token, coll)
-
-```TOKEN=0x... COLLECTOR=0x... npm run lp:test
-
-contracts/          # Contrats Solidity
-├── DignaHybridToken.sol
-├── StakingPool.sol
-├── SolidarityVault.sol
-├── LiquidityCollector.sol
-└── interfaces/      # Interfaces ERC20 et Pancake Router
-
-artifacts/          # Artefacts compilés Hardhat
-├── build-info/
-└── contracts/
-
-cache/              # Cache Hardhat
-hardhat.config.js   # Configuration réseau BSC
-package.json        # Dépendances et scripts
-```
+- **DignaHybridToken** : Token ERC20 avec frais de transaction dynamiques
+- **StakingPool** : Pool de staking pour les récompenses
+- **SolidarityVault** : Vault de solidarité pour la redistribution
+- **LiquidityCollector** : Collecteur automatique de liquidités
 
 ## 🚀 Démarrage rapide
 
 ### Installation
 ```bash
+# Digna Hybrid Token
+
+Project purpose
+---------------
+Digna is a hybrid token project designed to demonstrate an on-chain token model where small transaction fees are redistributed to community-oriented uses: staking rewards, a solidarity fund, and liquidity provisioning. The goal is to make the smart contract logic transparent and auditable while never exposing sensitive data or private keys.
+
+Key principles:
+- Open, auditable Solidity source code
+- Clear separation of responsibilities (staking pool, solidarity vault, liquidity collector)
+- No secrets or private keys hard-coded in the repository
+
+Fees summary
+------------
+The token applies small, fixed fees on transfers that are distributed as follows:
+
+- Solidarity vault: 0.06%
+- Staking pool: 0.02%
+- Liquidity collector: 0.01%
+- Dev / maintenance: 0.01%
+
+Total fee per transfer: 0.10% (values are immutable in the contract). These amounts power on-chain mechanisms such as staking rewards, solidarity donations, liquidity additions, and maintenance funds. No sensitive addresses are included here.
+
+Public repository contents
+--------------------------
+- `contracts/`: main Solidity contracts (DignaHybridToken, StakingPool, SolidarityVault, LiquidityCollector, interfaces)
+- `hardhat.config.js`: configuration (secrets are read from `.env`)
+- `package.json`: dependencies and npm scripts
+- `README.md`: public documentation
+
+Files kept locally (not pushed)
+------------------------------
+Some deployment and packaging files are kept only locally and are excluded from the public repository via `.gitignore`:
+- `scripts/` (deployment and utility scripts)
+- `flat/` (flattened Solidity files)
+- `artifacts/`, `cache/`, and `node_modules/`
+
+Quick start
+-----------
+1. Install dependencies:
+```powershell
 npm install
 ```
-
-### Configuration
-Créez un fichier `.env` à la racine (voir `.env.example`) :
+2. Create a `.env` file at the project root (see `.env.example`):
 ```
-PRIVATE_KEY=votre_clé_privée
-BSCSCAN_API_KEY=votre_clé_api_bscscan
+PRIVATE_KEY=<your private key>
+BSCSCAN_API_KEY=<your BscScan API key>
 ```
-
-### Compilation
-```bash
+3. Compile:
+```powershell
 npx hardhat compile
 ```
 
-### Tests et Déploiement
-```bash
-# Testnet BSC
-npm run deploy:test
-npm run lp:test
-npm run bal:main
+Security
+--------
+- Never commit your `.env` file or private keys.
+- Files listed in `.gitignore` are excluded from the public repo.
 
-# Mainnet BSC
-npm run deploy:main
-npm run lp:main
-```
+License
+-------
+See the `LICENSE` file for usage terms.
 
-## 📋 Scripts Disponibles
+Contact / contributions
+-----------------------
+Contributions via Pull Requests are welcome. For security-sensitive coordination or deployment questions, open a private issue or contact the maintainers directly.
+Sécurité
+--------
+- Ne commitez jamais votre fichier `.env` ni vos clés privées.
+- Les fichiers listés dans `.gitignore` sont exclus du dépôt public.
 
-Les scripts de déploiement et gestion sont disponibles dans le répertoire `scripts/` :
-- `deploy_all.js` : Déployer tous les contrats
-- `seed-and-add-liquidity.js` : Initialiser et ajouter de la liquidité
-- `check-balance.js` : Vérifier les soldes
-- `verify.js` : Vérifier les contrats sur BSCScan
+Licence
+-------
+Consultez le fichier `LICENSE` pour les conditions d'utilisation.
 
-## 🔐 Sécurité
-
-⚠️ **N'engagez jamais vos clés privées ou fichiers `.env`**
-
-Les fichiers sensibles suivants sont ignorés par Git :
-- `.env` et variantes
-- Fichiers de clés privées
-- `node_modules/`
-- Cache et artifacts générés
-
-## 📜 Licence
-
-Consultez le fichier LICENSE pour plus d'informations.
+Contact / contributions
+-----------------------
+Contributions bienvenues via Pull Requests. Pour les questions de sécurité ou coordination de déploiement, ouvrez une issue privée ou contactez les mainteneurs.
